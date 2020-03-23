@@ -21,6 +21,10 @@ class ShapesHelper():
         self.x_top, self.x_bottom = 0, self.f_cols
         self.y_top, self.y_bottom = 0, self.f_rows
 
+        # only accept stride that gives a whole number
+        check_stride_size = (self.x_cols-self.f_cols)/(self.stride)+1
+        assert (check_stride_size).is_integer()
+
     def get_unique_positions(self):
         x_positions = self._get_num_x_positions()
         y_positions = self._get_num_y_positions()
