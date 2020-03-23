@@ -2,28 +2,29 @@ import numpy as np
 
 class ShapesHelper():
     def __init__(self, x, f, stride):
-        self.x = x # image
+        self.x = x # image / input
         self.f = f # filter
         self.stride = stride
 
-        self.initialize_shapes()
+        self.initialize_shapes(True)
         self.unique_positions = self.get_unique_positions()
 
-    def initialize_shapes(self):
+    def initialize_shapes(self, do_assertions=False):
         self.f_rows, self.f_cols = self.f.shape
         self.x_rows, self.x_cols = self.x.shape
-
-        # only accept the size N=M
-        assert self.f_rows == self.f_cols
-        assert self.x_rows == self.x_cols
 
         # matrix coordinates
         self.x_top, self.x_bottom = 0, self.f_cols
         self.y_top, self.y_bottom = 0, self.f_rows
 
-        # only accept stride that gives a whole number
-        check_stride_size = (self.x_cols-self.f_cols)/(self.stride)+1
-        assert (check_stride_size).is_integer()
+        if do_assertions:
+            # only accept the size N=M
+            assert self.f_rows == self.f_cols
+            assert self.x_rows == self.x_cols
+
+            # only accept stride that gives a whole number
+            check_stride_size = (self.x_cols-self.f_cols)/(self.stride)+1
+            assert (check_stride_size).is_integer()
 
     def get_unique_positions(self):
         x_positions = self._get_num_x_positions()
