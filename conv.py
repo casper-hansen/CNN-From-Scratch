@@ -22,11 +22,13 @@ slices = []
 slices.append(x[y_top : y_bottom, x_top: x_bottom])
 
 for i in range(0, unique_positions-1):
+    # move left to right
     x_top += stride
     x_bottom += stride
 
     position = x[y_top : y_bottom, x_top: x_bottom]
     if position.size == 0 or position.size != f_rows*f_cols:
+        # if we are at the right edge, move back left and go downwards
         x_top = 0
         x_bottom = f_cols
         y_top += stride
