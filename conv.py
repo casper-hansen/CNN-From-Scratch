@@ -38,6 +38,11 @@ for i in range(0, unique_positions-1):
     
     slices.append(position)
 
+# calculate output size and fill out array
+output_size = int((x_cols-f_cols)/(stride)+1)
+out_array = np.zeros((output_size, output_size))
+print(out_array)
+
 for position in slices:
     print(position)
     output = np.vdot(position, f)
