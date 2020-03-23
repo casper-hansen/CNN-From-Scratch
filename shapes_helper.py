@@ -40,10 +40,7 @@ class ShapesHelper():
             self.x_top += self.stride
             self.x_bottom += self.stride
 
-            position = self.x[self.y_top : self.y_bottom, self.x_top: self.x_bottom]
-            if position.size == 0 or position.size != self.f_rows*self.f_cols:
-                # reset and stop loop
-                self.initialize_shapes()
+            if self._check_position():
                 break
 
         return num_positions_x
@@ -57,10 +54,14 @@ class ShapesHelper():
             self.y_top += self.stride
             self.y_bottom += self.stride
 
-            position = self.x[self.y_top : self.y_bottom, self.x_top: self.x_bottom]
-            if position.size == 0 or position.size != self.f_rows*self.f_cols:
-                # reset and stop loop
-                self.initialize_shapes()
+            if self._check_position():
                 break
 
         return num_positions_y
+
+    def _check_position(self):
+        position = self.x[self.y_top : self.y_bottom, self.x_top: self.x_bottom]
+        if position.size == 0 or position.size != self.f_rows*self.f_cols:
+            # reset and stop loop
+            self.initialize_shapes()
+            return True
