@@ -15,8 +15,8 @@ class ConvolutionalNeuralNetwork():
 
     def calculate_spatial_positions(self):
         # initialize slices
-        slices = []
-        slices.append(self.x[self.y_top : self.y_bottom, self.x_top: self.x_bottom])
+        self.slices = []
+        self.slices.append(self.x[self.y_top : self.y_bottom, self.x_top: self.x_bottom])
 
         for i in range(0, self.unique_positions-1):
             # move left to right
@@ -31,14 +31,11 @@ class ConvolutionalNeuralNetwork():
                 self.y_top += self.stride
                 self.y_bottom += self.stride
 
-                #print(f'x[{y_top}:{y_bottom}, {x_top}:{x_bottom}]')
-
-                # TODO: check if we are at y-axis edge?
+                # TODO: check if we are at y-axis edge? not possible, because of sizes?
                 position = self.x[self.y_top : self.y_bottom, self.x_top: self.x_bottom]
+                #print(f'x[{y_top}:{y_bottom}, {x_top}:{x_bottom}]')
             
-            slices.append(position)
-
-        self.slices = slices
+            self.slices.append(position)
 
     def calculate_dot_products(self):
         # calculate output size and prepare array

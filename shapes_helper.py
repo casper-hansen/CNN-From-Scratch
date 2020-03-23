@@ -18,7 +18,7 @@ class ShapesHelper():
         self.y_top, self.y_bottom = 0, self.f_rows
 
         if do_assertions:
-            # only accept the size N=M
+            # only accept the size NxN and FxF
             assert self.f_rows == self.f_cols
             assert self.x_rows == self.x_cols
 
