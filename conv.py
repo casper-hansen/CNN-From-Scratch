@@ -42,7 +42,7 @@ for i in range(0, unique_positions-1):
 
 # calculate output size and fill out array
 output_size = int((x_cols-f_cols)/(stride)+1)
-out_array = np.zeros((output_size, output_size))
+out_array = np.zeros((output_size, output_size), dtype=int)
 
 slice_counter = 0
 for i in range(output_size):
