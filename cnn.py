@@ -47,6 +47,7 @@ class ConvolutionalNeuralNetwork():
         for i in range(output_size):
             for j in range(output_size):
                 position = self.slices[slice_counter]
+                #Same effect: np.sum(np.multiply(position, self.f))
                 output_dots[i][j] = np.vdot(position, self.f)
                 slice_counter += 1
 
