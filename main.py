@@ -1,5 +1,5 @@
-from shapes_helper import ShapesHelper
 from cnn import ConvolutionalNeuralNetwork
+from layers.conv2d import Conv2D
 import numpy as np
 
 x = np.array([[1, 2, 3, 4],
@@ -12,9 +12,8 @@ f = np.array([[2, 3],
 
 stride = 2
 
-helper = ShapesHelper(x, f, stride)
+cnn = ConvolutionalNeuralNetwork(x, f, stride)
 
-cnn = ConvolutionalNeuralNetwork(x, f, stride, helper.get_all_params)
+cnn.add(Conv2D(x, f, stride))
 
-cnn.calculate_spatial_positions()
-cnn.calculate_dot_products()
+cnn.fit()
