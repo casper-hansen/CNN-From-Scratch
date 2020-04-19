@@ -12,7 +12,7 @@ f = np.array([[2, 3],
 
 stride = 2
 
-cnn = ConvolutionalNeuralNetwork(x, f, stride)
+cnn = ConvolutionalNeuralNetwork()
 
 cnn.add(Conv2D(x, f, stride))
 

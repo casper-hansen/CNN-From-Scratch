@@ -1,11 +1,7 @@
 import numpy as np
 
 class ConvolutionalNeuralNetwork():
-    def __init__(self, x, f, stride):
-        self.x = x # image / input
-        self.f = f # filter
-        self.stride = stride
-
+    def __init__(self):
         self.layers = []
 
     def add(self, layer_to_add):
