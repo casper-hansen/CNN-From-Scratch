@@ -16,9 +16,11 @@ class Conv2D():
 
     def _map_activation(self, activation):
         activation = activation.lower()
-        
+
         if activation == 'relu':
             return relu, relu_derivative
+        elif activation == 'sigmoid':
+            return sigmoid, sigmoid_derivative
 
     def _get_shapes(self, x):
         self.x = x
