@@ -16,4 +16,4 @@ class ConvolutionalNeuralNetwork():
 
     def fit(self, x):
         output = self.forward_pass(x)
-        print(output )
+        print(output)
