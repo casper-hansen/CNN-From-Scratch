@@ -2,24 +2,27 @@ import numpy as np
 from shapes_helper import ShapesHelper
 
 class Conv2D():
-    def __init__(self, x, f, stride):
-        self.x = x # image / input
+    def __init__(self, f, stride):
+        self.x = None # image / input
         self.f = f # filter
         self.stride = stride
 
-        self.shapes = ShapesHelper(x, f, stride)
+    def forward(self, x):
+        self._get_shapes(x)
+        self._get_positions()
+        output = self._get_activation_map()
+
+        return output
+
+    def _get_shapes(self, x):
+        self.x = x
+        self.shapes = ShapesHelper(self.x, self.f, self.stride)
         
         self.unique_positions, \
             self.x_top, self.x_bottom, \
             self.y_top, self.y_bottom, \
             self.x_rows, self.x_cols, \
             self.f_rows, self.f_cols = self.shapes.get_all_params()
-
-    def forward(self):
-        self._get_positions()
-        output = self._get_activation_map()
-
-        print(output)
 
     def _get_positions(self):
         # initialize slices

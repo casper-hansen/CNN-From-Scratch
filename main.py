@@ -14,6 +14,6 @@ stride = 2
 
 cnn = ConvolutionalNeuralNetwork()
 
-cnn.add(Conv2D(x, f, stride))
+cnn.add(Conv2D(f, stride))
 
-cnn.fit()
+cnn.fit(x)
