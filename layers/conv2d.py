@@ -1,16 +1,24 @@
 import numpy as np
 from shapes_helper import ShapesHelper
+from activation_functions import *
 
 class Conv2D():
-    def __init__(self, f, stride):
+    def __init__(self, f, stride, activation):
         self.x = None # image / input
         self.f = f # filter
         self.stride = stride
+        self.activation, self.activation_diff = self._map_activation(activation)
 
     def forward(self, x):
         self._get_shapes(x)
         self._get_positions()
         return self._get_activation_map()
+
+    def _map_activation(self, activation):
+        activation = activation.lower()
+        
+        if activation == 'relu':
+            return relu, relu_derivative
 
     def _get_shapes(self, x):
         self.x = x

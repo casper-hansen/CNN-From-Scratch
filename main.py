@@ -8,12 +8,11 @@ x = np.array([[1, 2, 3, 4],
               [5, 4, 8, 2]])
 
 f = np.array([[2, 3],
-             [1, 1]])
-
+              [1, 1]])
 
 cnn = ConvolutionalNeuralNetwork()
 
-cnn.add(Conv2D(f, stride=2))
+cnn.add(Conv2D(f, stride=2, activation='relu'))
 cnn.add(Dense())
 
 cnn.fit(x)
