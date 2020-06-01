@@ -10,9 +10,7 @@ class Conv2D():
     def forward(self, x):
         self._get_shapes(x)
         self._get_positions()
-        output = self._get_activation_map()
-
-        return output
+        return self._get_activation_map()
 
     def _get_shapes(self, x):
         self.x = x
