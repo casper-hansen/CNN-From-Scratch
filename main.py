@@ -13,6 +13,5 @@ f = np.array([[2, 3],
 cnn = ConvolutionalNeuralNetwork()
 
 cnn.add(Conv2D(f, stride=2, activation='relu'))
-cnn.add(Dense())
 
 cnn.fit(x)
